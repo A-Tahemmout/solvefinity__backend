@@ -1,0 +1,35 @@
+spring:
+  app:
+    name: Solvefinity
+    version: 1.0.0
+    description: Solvefinity
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_solvefinity?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+    username: root
+    password: solvefinity
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
+    generate-ddl: true
+  data:
+    rest:
+      # base-path: /api
+
+server:
+  servlet:
+    # context-path: /api
+  error:
+    include-message: always
+
+solvefinity:
+  app:
+    # JWT Configuration
+    jwtSecret: 4B6250655368566D5971337336763979244226452948404D635166546A576E5A7234753777217A25432A462D4A614E645267556B58703273357638792F413F44
+    jwtExpirationMs: 86400000 # 1 day in milliseconds
