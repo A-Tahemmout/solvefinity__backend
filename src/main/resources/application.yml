@@ -10,7 +10,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
@@ -20,16 +20,32 @@ spring:
     generate-ddl: true
   data:
     rest:
-      # base-path: /api
+    # base-path: /api
 
 server:
+  port: 3000
   servlet:
-    # context-path: /api
+  # context-path: /api
   error:
     include-message: always
 
 solvefinity:
   app:
+    name: Solvefinity
+    version: 1.0.0
+    description: Solvefinity
+    # CORS
+    cors:
+      allowed-origins: "http://localhost:4200"
+      allowed-methods: "*"
+      allowed-headers: "*"
+      exposed-headers: "*"
+      allow-credentials: true
+      max-age: 3600
     # JWT Configuration
-    jwtSecret: 4B6250655368566D5971337336763979244226452948404D635166546A576E5A7234753777217A25432A462D4A614E645267556B58703273357638792F413F44
-    jwtExpirationMs: 86400000 # 1 day in milliseconds
+    jwt:
+      secret: 4B6250655368566D5971337336763979244226452948404D635166546A576E5A7234753777217A25432A462D4A614E645267556B58703273357638792F413F44
+      expiration: 86400000 # 1 day
+    # Upload Configuration
+    upload:
+      path: "src/main/resources/uploads/"
