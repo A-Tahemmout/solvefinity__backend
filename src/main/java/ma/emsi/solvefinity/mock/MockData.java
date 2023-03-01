@@ -241,8 +241,42 @@ public class MockData {
                 .bank(bankRepository.findBySlug("solvefinity"))
                 .build();
 
+        // Loaner 6
+        Loaner loaner6 = Loaner.builder()
+                .cin("T000001")
+                .firstName("Sarah")
+                .lastName("Johnson")
+                .avatar("loaner-icon.png")
+                .email("johnson-sarah@gmail.vom")
+                .phone("+212 6 00 00 00 08")
+                .address("Rue 9, Rabat, Maroc")
+                .employmentTitle("Software Engineer")
+                .employmentLength(EmploymentLength.FIVE_YEARS)
+                .annualIncome(85000.0)
+                .verificationStatus(VerificationStatus.VERIFIED)
+                .homeOwnership(HomeOwnership.RENT)
+                .bank(bankRepository.findBySlug("solvefinity"))
+                .build();
+
+        // Loaner 7
+        Loaner loaner7 = Loaner.builder()
+                .cin("T000002")
+                .firstName("John")
+                .lastName("Smith")
+                .avatar("loaner-icon.png")
+                .email("smith-john@gmail.comm")
+                .phone("+212 6 00 00 00 09")
+                .address("Rue 10, Rabat, Maroc")
+                .employmentTitle("Retail Associate")
+                .employmentLength(EmploymentLength.ONE_YEAR)
+                .annualIncome(30000.0)
+                .verificationStatus(VerificationStatus.NOT_VERIFIED)
+                .homeOwnership(HomeOwnership.RENT)
+                .bank(bankRepository.findBySlug("solvefinity"))
+                .build();
+
         // Save loaners in database
-        loanerRepository.saveAll(List.of(loaner1, loaner2, loaner3, loaner4, loaner5));
+        loanerRepository.saveAll(List.of(loaner1, loaner2, loaner3, loaner4, loaner5, loaner6, loaner7));
     }
 
     private void loans() {
@@ -311,7 +345,33 @@ public class MockData {
                 .status(LoanStatus.PENDING)
                 .build();
 
+        // Loan 6
+        Loan loan6 = Loan.builder()
+                .loaner(loanerRepository.findByCin("T000001").orElse(null))
+                .amount(10000.0)
+                .term(LoanTerm.THIRTY_SIX)
+                .interestRate(8.99)
+                .installment(317.53)
+                .grade(LoanGrade.A)
+                .purpose(LoanPurpose.DEBT_CONSOLIDATION)
+                .note("This is a test loan for Sarah Johnson")
+                .status(LoanStatus.PENDING)
+                .build();
+
+        // Loan 7
+        Loan loan7 = Loan.builder()
+                .loaner(loanerRepository.findByCin("T000002").orElse(null))
+                .amount(5000.0)
+                .term(LoanTerm.THIRTY_SIX)
+                .interestRate(22.99)
+                .installment(251.33)
+                .grade(LoanGrade.D)
+                .purpose(LoanPurpose.VACATION)
+                .note("This is a test loan for John Smith")
+                .status(LoanStatus.PENDING)
+                .build();
+
         // Save loans in database
-        loanRepository.saveAll(List.of(loan1, loan2, loan3, loan4, loan5));
+        loanRepository.saveAll(List.of(loan1, loan2, loan3, loan4, loan5, loan6, loan7));
     }
 }
