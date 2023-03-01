@@ -4,12 +4,14 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import ma.emsi.solvefinity.domain.converter.LoanerConverter;
 import ma.emsi.solvefinity.domain.vo.LoanerVO;
+import ma.emsi.solvefinity.model.BaseEntity;
 import ma.emsi.solvefinity.model.Loaner;
 import ma.emsi.solvefinity.repository.LoanerRepository;
 import ma.emsi.solvefinity.service.LoanerService;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,6 +33,9 @@ public class LoanerServiceImpl implements LoanerService {
     @Override
     public LoanerVO getById(UUID uuid) {
         Loaner loaner = loanerRepository.findById(uuid).orElse(null);
+
+        // Sort the loans by the creation date
+        loaner.getLoans().sort(Comparator.comparing(BaseEntity::getCreatedAt));
 
         return LoanerConverter.toVO(loaner);
     }
