@@ -51,6 +51,8 @@ public class LoanConverter {
         bo.setPurpose(LoanPurpose.getById(vo.getPurpose()));
         bo.setNote(vo.getNote());
         bo.setStatus(LoanStatus.getById(vo.getStatus()));
+        // Loaner
+        bo.setLoaner(LoanerConverter.toBO(vo.getLoaner()));
         // Audit
         bo.setCreatedAt(vo.getCreatedAt());
         bo.setUpdatedAt(vo.getUpdatedAt());

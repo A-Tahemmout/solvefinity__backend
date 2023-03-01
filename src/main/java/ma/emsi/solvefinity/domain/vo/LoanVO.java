@@ -25,6 +25,8 @@ public class LoanVO {
     private String note;
     private Integer status;
 
+    private LoanerVO loaner;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
