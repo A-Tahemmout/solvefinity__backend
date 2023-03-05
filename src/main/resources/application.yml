@@ -1,0 +1,52 @@
+spring:
+  app:
+    name: Solvefinity
+    version: 1.0.0
+    description: Solvefinity
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_solvefinity?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+    username: root
+    password: solvefinity
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
+    generate-ddl: true
+  data:
+    rest:
+    # base-path: /api
+
+server:
+  port: 3000
+  servlet:
+  # context-path: /api
+  error:
+    include-message: always
+
+solvefinity:
+  app:
+    name: Solvefinity
+    version: 1.0.0
+    description: Solvefinity
+    admin-bank-slug: solvefinity
+    # CORS
+    cors:
+      allowed-origins: "http://localhost:4200"
+      allowed-methods: "*"
+      allowed-headers: "*"
+      exposed-headers: "*"
+      allow-credentials: true
+      max-age: 3600
+    # JWT Configuration
+    jwt:
+      secret: 4B6250655368566D5971337336763979244226452948404D635166546A576E5A7234753777217A25432A462D4A614E645267556B58703273357638792F413F44
+      expiration: 86400000 # 1 day
+    # Upload Configuration
+    upload:
+      path: "src/main/resources/uploads/"
