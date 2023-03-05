@@ -1,4 +1,4 @@
-# Solvefinity
+# Solvefinity - Back
 
 Solvefinity is a Spring REST API that utilizes a neural network to predict the solvency of potential loaners. The app allows for an app admin to manage the addition of banks and their users (bank admin and bank agent), while bank admins can manage bank agents. Bank agents can then manage loaners and their loans, and generate a solvency prediction.
 
